@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core'
-import { IEvent } from './shared/event.model'
+import { Component, Input } from '@angular/core';
+import { IEvent } from './shared/event.model';
 
 @Component({
   selector: 'event-thumbnail',
@@ -32,10 +32,11 @@ import { IEvent } from './shared/event.model'
   `]
 })
 export class EventThumbnailComponent {
-  @Input() event: IEvent
+  @Input() event: IEvent;
 
-  getStartTimeClass() {
-    const isEarlyStart = this.event && this.event.time === '8:00 am'
+  getStartTimeClass(): Array<string> {
+    const isEarlyStart = this.event && this.event.time === '8:00 am';
+
     return isEarlyStart ? ['green', 'bold'] : [];
   }
 }

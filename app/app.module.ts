@@ -1,37 +1,38 @@
-import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule } from '@angular/router'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { AuthService } from './user/auth.service'
-import { HttpModule } from '@angular/http'
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './user/auth.service';
+import { HttpModule } from '@angular/http';
 
 import {
-  EventsListComponent,
-  EventThumbnailComponent,
-  EventDetailsComponent,
   CreateEventComponent,
   CreateSessionComponent,
+  DurationPipe,
+  EventDetailsComponent,
   EventListResolver,
   EventResolver,
+  EventsListComponent,
+  EventThumbnailComponent,
+  LocationValidator,
   SessionListComponent,
-  DurationPipe,
   UpvoteComponent,
-  VoterService,
-  LocationValidator
-} from './events/index'
+  VoterService
+} from './events/index';
 
-import { EventsAppComponent } from './events-app.component'
-import { NavBarComponent } from './nav/navbar.component'
-import { Error404Component } from './errors/404.component'
+import { EventsAppComponent } from './events-app.component';
+import { NavBarComponent } from './nav/navbar.component';
+import { Error404Component } from './errors/404.component';
 
-import { EventService } from './events/shared/event.service'
-import { 
-  JQ_TOKEN, 
-  TOASTR_TOKEN, Toastr, 
-  CollapsibleWellComponent, 
-  SimpleModalComponent, 
-  ModalTriggerDirective } from './common/index'
-import { appRoutes } from './routes'
+import { EventService } from './events/shared/event.service';
+import {
+  CollapsibleWellComponent,
+  JQ_TOKEN,
+  ModalTriggerDirective,
+  SimpleModalComponent,
+  Toastr,
+  TOASTR_TOKEN } from './common/index';
+import { appRoutes } from './routes';
 
 declare let toastr: Toastr;
 declare let jQuery: Object;
@@ -45,7 +46,7 @@ declare let jQuery: Object;
     HttpModule
   ],
   declarations: [
-    EventsAppComponent, 
+    EventsAppComponent,
     EventsListComponent,
     EventThumbnailComponent,
     EventDetailsComponent,
@@ -75,9 +76,9 @@ declare let jQuery: Object;
 })
 export class AppModule {}
 
-function checkDirtyState(component:CreateEventComponent) {
+function checkDirtyState(component: CreateEventComponent): boolean {
   if (component.isDirty)
-    return window.confirm('You have not saved this event, do you really want to cancel?')
+    return window.confirm('You have not saved this event, do you really want to cancel?');
 
-  return true
+  return true;
 }
